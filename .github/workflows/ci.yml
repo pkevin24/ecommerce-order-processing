@@ -106,29 +106,29 @@ jobs:
         run: |
           mvn ${{ env.MAVEN_ARGS }} package -DskipTests
 
-      - name: Build Docker image
-        run: |
-          docker build -t order-service:${{ github.sha }} ./order-service
-          docker build -t inventory-service:${{ github.sha }} ./inventory-service
-          docker build -t payment-service:${{ github.sha }} ./payment-service
-          docker build -t notification-service:${{ github.sha }} ./notification-service
+      # - name: Build Docker image
+      #   run: |
+      #     docker build -t order-service:${{ github.sha }} ./order-service
+      #     docker build -t inventory-service:${{ github.sha }} ./inventory-service
+      #     docker build -t payment-service:${{ github.sha }} ./payment-service
+      #     docker build -t notification-service:${{ github.sha }} ./notification-service
 
-      - name: Log in to Docker Hub
-        run: |
-          echo ${{ secrets.DOCKER_REGISTRY_PASSWORD }} | docker login -u ${{ secrets.DOCKER_REGISTRY_USERNAME }} --password-stdin
+      # - name: Log in to Docker Hub
+      #   run: |
+      #     echo ${{ secrets.DOCKER_REGISTRY_PASSWORD }} | docker login -u ${{ secrets.DOCKER_REGISTRY_USERNAME }} --password-stdin
 
-      - name: Push Docker images
-        if: github.ref == 'refs/heads/master'
-        run: |
-          docker tag order-service:${{ github.sha }} ${{ secrets.DOCKER_USERNAME }}/order-service:${{ github.sha }}
-          docker tag inventory-service:${{ github.sha }} ${{ secrets.DOCKER_USERNAME }}/inventory-service:${{ github.sha }}
-          docker tag payment-service:${{ github.sha }} ${{ secrets.DOCKER_USERNAME }}/payment-service:${{ github.sha }}
-          docker tag notification-service:${{ github.sha }} ${{ secrets.DOCKER_USERNAME }}/notification-service:${{ github.sha }}
+      # - name: Push Docker images
+      #   if: github.ref == 'refs/heads/master'
+      #   run: |
+      #     docker tag order-service:${{ github.sha }} ${{ secrets.DOCKER_USERNAME }}/order-service:${{ github.sha }}
+      #     docker tag inventory-service:${{ github.sha }} ${{ secrets.DOCKER_USERNAME }}/inventory-service:${{ github.sha }}
+      #     docker tag payment-service:${{ github.sha }} ${{ secrets.DOCKER_USERNAME }}/payment-service:${{ github.sha }}
+      #     docker tag notification-service:${{ github.sha }} ${{ secrets.DOCKER_USERNAME }}/notification-service:${{ github.sha }}
           
-          docker push ${{ secrets.DOCKER_USERNAME }}/order-service:${{ github.sha }}
-          docker push ${{ secrets.DOCKER_USERNAME }}/inventory-service:${{ github.sha }}
-          docker push ${{ secrets.DOCKER_USERNAME }}/payment-service:${{ github.sha }}
-          docker push ${{ secrets.DOCKER_USERNAME }}/notification-service:${{ github.sha }}
+      #     docker push ${{ secrets.DOCKER_USERNAME }}/order-service:${{ github.sha }}
+      #     docker push ${{ secrets.DOCKER_USERNAME }}/inventory-service:${{ github.sha }}
+      #     docker push ${{ secrets.DOCKER_USERNAME }}/payment-service:${{ github.sha }}
+      #     docker push ${{ secrets.DOCKER_USERNAME }}/notification-service:${{ github.sha }}
 
   security-scan:
     needs: build
