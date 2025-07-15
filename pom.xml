@@ -56,13 +56,13 @@
         <docker.registry>your-registry.com</docker.registry>
     </properties>
 
-    <modules>
+    <!-- <modules>
         <module>shared-common</module>
         <module>order-service</module>
         <module>inventory-service</module>
         <module>payment-service</module>
         <module>notification-service</module>
-    </modules>
+    </modules> -->
 
     <dependencyManagement>
         <dependencies>
