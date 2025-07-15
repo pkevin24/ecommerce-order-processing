@@ -8,7 +8,7 @@ on:
 
 env:
   JAVA_VERSION: '17'
-  MAVEN_ARGS: '-B -V --no'
+  MAVEN_ARGS: '-B -V'
 
 
 jobs:
