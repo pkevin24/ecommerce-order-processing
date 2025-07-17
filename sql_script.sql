@@ -25,4 +25,8 @@ CREATE TABLE order_mgmt.order_item (
     total_price NUMERIC(10,2)
 );
 
+ALTER TABLE order_mgmt.orders 
+ALTER COLUMN status SET DATA TYPE SMALLINT USING status::smallint;
+
+
 

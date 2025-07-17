@@ -92,3 +92,5 @@ kafka-logs/
 
 # Kubernetes secrets
 k8s/secrets/
+/.apt_generated/
+/.apt_generated_tests/

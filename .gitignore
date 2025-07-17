@@ -48,6 +48,16 @@ build/
 *.swp
 *.swo
 
+# Eclipse IDE (MISSING - ADD THESE)
+.project
+.classpath
+.settings/
+*.prefs
+bin/
+.metadata/
+.recommenders/
+.factorypath
+
 # OS
 .DS_Store
 .DS_Store?
@@ -92,3 +102,21 @@ kafka-logs/
 
 # Kubernetes secrets
 k8s/secrets/
+
+# Maven wrapper executables (MISSING - ADD THESE)
+mvnw
+mvnw.cmd
+.mvn/
+
+# Generated documentation (MISSING - ADD THESE)
+HELP.md
+
+# Lombok generated files (MISSING - ADD THESE)
+.apt_generated/
+.apt_generated_test/
+
+# JUnit test reports (MISSING - ADD THESE)
+TEST-*.xml
+
+# Spring Boot DevTools restart trigger file (MISSING - ADD THESE)
+.reloadtrigger
