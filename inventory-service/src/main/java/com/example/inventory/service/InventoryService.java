@@ -30,7 +30,7 @@ public class InventoryService {
 				.map(item -> item.getProductId())
 				.collect(Collectors.toList());
 		
-		List<Inventory> inStock = inventoryRepository.findByProductId(productIds);
+		List<Inventory> inStock = inventoryRepository.findByProductIdIn(productIds);
 
 		Map<String, Integer> inventoryMap = inStock.stream()
 		        .collect(Collectors.toMap(

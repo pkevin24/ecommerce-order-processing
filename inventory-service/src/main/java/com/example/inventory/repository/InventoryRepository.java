@@ -10,5 +10,6 @@ import com.example.inventory.model.Inventory;
 @Repository
 public interface InventoryRepository extends JpaRepository<Inventory, Long> {
 	
-	List<Inventory> findByProductId(List<String> productId);
+	List<Inventory> findByProductIdIn(List<String> productIds);
+
 }
