@@ -11,6 +11,7 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 import com.example.order.model.Order;
+import com.example.order.model.OrderItem;
 import com.example.order.repository.OrderRepository;
 
 import jakarta.transaction.Transactional;
@@ -32,6 +33,9 @@ public class OrderService {
 		UUID uuid = UUID.randomUUID();
 		order.setOrderId(uuid.toString());
 		
+		for (OrderItem item : order.getItems()) {
+		    item.setOrder(order);  // Set the back reference
+		}
 		
 		//save order
 		Order savedOrder = repository.save(order);

@@ -11,6 +11,7 @@ import org.shared.common.events.InventoryResponseEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.inventory.kafka.InventoryEventProducer;
 import com.example.inventory.model.Inventory;
 import com.example.inventory.repository.InventoryRepository;
 
@@ -22,6 +23,9 @@ public class InventoryService {
 	
 	@Autowired
 	private InventoryRepository inventoryRepository;
+	
+	@Autowired
+	private InventoryEventProducer inventoryEventProducer;
 
 	public void checkStockAvailability(InventoryCheckEvent event) {
 		List<InventoryItem>  items = event.getItems();
@@ -65,7 +69,7 @@ public class InventoryService {
 		//Create a response
 		InventoryResponseEvent response = new InventoryResponseEvent(event.getOrderId(), allItemsAvailable, availabilityList, LocalDateTime.now());
 		
-		
+		inventoryEventProducer.sendInventoryResponseEvent(response);
 		
 		
 		
