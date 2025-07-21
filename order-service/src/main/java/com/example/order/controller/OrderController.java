@@ -21,7 +21,7 @@ public class OrderController {
 	public ResponseEntity<?> createOrder(@RequestBody Order request){
 		//validate order
 		orderService.createOrder(request);
-		return ResponseEntity.ok("Order placed successfully");
+		return ResponseEntity.ok("Order request placed successfully");
 	}
 
 }
