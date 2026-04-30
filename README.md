@@ -2,7 +2,7 @@
 
 A microservices-based e-commerce backend for order creation and inventory validation, built with Java 17, Spring Boot 3.5.3, and Apache Kafka.
 
-> Last updated: April 2026
+> Last updated: April 30, 2026
 
 ## Architecture
 
